@@ -13,7 +13,7 @@
     "tests/test_validate.py"
   ],
   "image_name": "erranli/swe-task-marshmallow-code-marshmallow-2892:latest",
-  "eval_script": "#!/bin/bash\nset -e\n\n# Set PYTHONPATH to include src directory\nexport PYTHONPATH=src:$PYTHONPATH\n\n# Install pytest if not available\npip install pytest 2>/dev/null || true\n\n# Run the specific test that was modified in the patch\npytest tests/test_validate.py::test_url_accepts_valid_file_urls -xvs",
+  "eval_script": "#!/bin/bash\nset -e\n\n# Set PYTHONPATH to include src directory\nexport PYTHONPATH=src:$PYTHONPATH\n\n# Install project with test dependencies\npip install -e \".[tests]\" 2>/dev/null || pip install -e \".[dev]\" 2>/dev/null || pip install -e . 2>/dev/null || true\npip install pytest simplejson 2>/dev/null || true\n\n# Run the specific test that was modified in the patch\npytest tests/test_validate.py::test_url_accepts_valid_file_urls -xvs",
   "pr_number": 2892,
   "pr_title": "fix: handle uppercase `file` URLs ",
   "merged": true,

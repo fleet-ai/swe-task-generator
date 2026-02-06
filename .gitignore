@@ -44,6 +44,12 @@ tasks/*/agentic_workspace/
 # Docker
 .dockerignore
 
+# Generated data (parquet files)
+data/
+
+# SkyRL clone (submodule, not committed)
+SkyRL/
+
 # OS
 .DS_Store
 Thumbs.db
